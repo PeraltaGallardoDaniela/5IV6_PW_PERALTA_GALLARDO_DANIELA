@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: "Quicksand", "Nunito", Verdana, sans-serif;
@@ -15,44 +16,57 @@ header {
   text-align: center;
   border-bottom: 3px solid #ffa4be;
 }
-header a {
-  color: #ff85a1;
+
+header h1 {
+  margin: 0;
 }
 
 main {
   max-width: 960px;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 1.5rem;
-
-}
-footer{
-    text-align: center;
-    padding: 1rem;
-    color: #d8e2dc;
-    font-size: 0.85rem;
-}
-/*catalogo de talleres*/
-
-.catalogo {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.tarjeta {
-    padding: 1rem;
-    border: 1px solid #fff6c0;
-    border-radius: 0.5rem;
-    background-color: #e2ece9;
+.content p {
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
-.tarjeta h2{
-    margin-top: 0;
-    font-size: 1.1 rem;
+/* Estilos para la Tabla de Ejercicios */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
 }
 
-.tarjeta a {
-    color: #ffc2d1;
-    text-decoration: none;
+.tabla th, 
+.tabla td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ffe3ec;
+}
+
+.tabla th {
+  background-color: #ffe6ed;
+  color: #4a3e3d;
+}
+
+.tabla a {
+  color: #ff85a1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tabla a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #888888;
+  font-size: 0.85rem;
 }
