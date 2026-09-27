@@ -1,151 +1,85 @@
-// app.js
 
-const talleresData = [
-  {
-    nombre: "Introducción a Python",
-    instructor: "Ing. María López",
-    cupo: 25,
-    inscritos: 25,
-  },
-  {
-    nombre: "Fundamentos de Redes",
-    instructor: "Ing. Carlos Ramírez",
-    cupo: 30,
-    inscritos: 18,
-  },
-  {
-    nombre: "Diseño de Bases de Datos",
-    instructor: "Ing. Ana Torres",
-    cupo: 20,
-    inscritos: 20,
-  },
-  {
-    nombre: "Desarrollo Web con JS",
-    instructor: "Ing. María López",
-    cupo: 25,
-    inscritos: 10,
-  },
+
+const talleres = [
+  { nombre: 'Introducción a Python', instructor: 'Ing. María López', cupo: 25, inscritos: 25 },
+  { nombre: 'Fundamentos de Redes', instructor: 'Ing. Carlos Ramírez', cupo: 30, inscritos: 18 },
+  { nombre: 'Diseño de Bases de Datos', instructor: 'Ing. Ana Torres', cupo: 20, inscritos: 20 },
+  { nombre: 'Desarrollo Web con JS', instructor: 'Ing. María López', cupo: 25, inscritos: 10 },
 ];
 
-// 1. Renderizar la tabla dinámica usando .map()
-function renderizarTabla(lista) {
-  const tbody = document.querySelector("#tabla-talleres tbody");
 
-  // Generar las filas con map y unirlas en un string HTML
-  const filasHtml = lista
-    .map(
-      (t) => `
-    <tr>
-      <td>${t.nombre}</td>
-      <td>${t.instructor}</td>
-      <td>${t.cupo}</td>
-      <td>${t.inscritos}</td>
-    </tr>
-  `
-    )
-    .join("");
-
-  tbody.innerHTML = filasHtml;
+function pintarTabla(){
+    //debe de obtener la tabla y rellenarla con los datos de talleres
 }
 
-// Cargar la tabla al iniciar
-document.addEventListener("DOMContentLoaded", () => {
-  renderizarTabla(talleresData);
-});
+const formArreglos = document.getElementById('form-arreglos');
+const resultadoArreglos = document.getElementById('resultado-arreglo');
+const selectOperacionArreglo = document.getElementById('operacion-arreglo');
 
-// 2. Manejar la ejecución del formulario/select
-const form = document.querySelector("#form-arreglos");
-const outputResultado = document.querySelector("#resultado-arreglo");
+formArreglos.addEventListener('submit', (evento) =>{
+    evento.preventDefault();
+    const operacion = selectOperacionArreglo.value;
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+    let resultado;
 
-  const operacion = document.querySelector("#operacion-arreglo").value;
-  let resultado = "";
-
-  switch (operacion) {
-    case "forEach":
-      let lista = [];
-      talleresData.forEach((t) =>
-        lista.push(`- ${t.nombre} (${t.inscritos}/${t.cupo})`)
-      );
-      resultado = lista.join("\n");
-      break;
-
-    case "map":
-      const nombresArr = talleresData.map((t) => t.nombre);
-      resultado = `Nombres de los talleres:\n${JSON.stringify(
-        nombresArr,
-        null,
-        2
-      )}`;
-      break;
-
-    case "filter":
-      const llenosArr = talleresData
-        .filter((t) => t.inscritos >= t.cupo)
-        .map((t) => t.nombre);
-      resultado = `Talleres llenos:\n${llenosArr.join(", ")}`;
-      break;
-
-    case "find":
-      const tallerMaria = talleresData.find(
-        (t) => t.instructor === "Ing. María López"
-      );
-      resultado = `Primer taller de Ing. María López:\n${tallerMaria.nombre} (Cupo: ${tallerMaria.cupo}, Inscritos: ${tallerMaria.inscritos})`;
-      break;
-
-    default:
-      resultado = "Operación no válida";
-  }
-
-  outputResultado.textContent = resultado;
-  // Cargar la tabla con datos al abrir la página
-  document.addEventListener("DOMContentLoaded", () => {
-    renderizarTabla(talleresData);
-  });
-
-  // Manejo del formulario
-  const form = document.querySelector("#form-arreglos");
-  const outputResultado = document.querySelector("#resultado-arreglo");
-
-  form.addEventListener("submit", (event) => {
-    // PREVIENE QUE LA PÁGINA SE RECARGUE AL DAR CLIC EN EJECUTAR
-    event.preventDefault();
-
-    const operacion = document.querySelector("#operacion-arreglo").value;
-    let resultado = "";
-
-    switch (operacion) {
-      case "forEach":
-        let lista = [];
-        talleresData.forEach((t) =>
-          lista.push(`- ${t.nombre} (${t.inscritos}/${t.cupo})`)
-        );
-        resultado = lista.join("\n");
-        break;
-
-      case "map":
-        const nombresArr = talleresData.map((t) => t.nombre);
-        resultado = JSON.stringify(nombresArr, null, 2);
-        break;
-
-      case "filter":
-        const llenosArr = talleresData
-          .filter((t) => t.inscritos >= t.cupo)
-          .map((t) => t.nombre);
-        resultado = `Talleres llenos:\n${llenosArr.join(", ")}`;
-        break;
-
-      case "find":
-        const tallerMaria = talleresData.find(
-          (t) => t.instructor === "Ing. María López"
-        );
-        resultado = `Primer taller de Ing. María López:\n${tallerMaria.nombre}`;
-        break;
+    switch(operacion){
+        case 'forEach':
+            resultado = talleres.map((t) => `- ${t.nombre} (${t.inscritos}/${t.cupo})`).join('\n');
+            break;
     }
 
-    outputResultado.textContent = resultado;
-  });
+
+    resultadoArreglos.textContent = resultado;
+});
+
+
+
+//ejercicio de objetos
+
+const formObjeto = document.getElementById('form-objeto');
+const resultadoObjeto = document.getElementById('resultado-objeto');
+
+formObjeto.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+
+    //necesitamos construir el objeto del taller
+    const taller = {
+        nombre: document.getElementById('obj-nombre').value,
+        instructor : document.getElementById('obj-instructor').value,
+        cupo : Number(document.getElementById('obj-cupo').value),
+        inscritos : Number(document.getElementById('obj-inscritos').value)
+    };
+
+    const operacion = document.getElementById('operacion-objeto').value;
+
+    let resultado;
+
+    switch(operacion){
+        case 'keys':
+            resultado = JSON.stringify(Object.keys(taller));
+            break;
+        case 'values':
+            break;
+        case 'entries':
+            break;
+        case 'stringify':
+            //yo
+            const textoJson = JSON.stringify(taller, null, 2);
+            resultado = `${textoJson}\n \n tipo: ${typeof textoJson}`;
+            break;
+        case 'roundtrip':
+            //yo
+            const textoJsons = JSON.stringify(taller, null, 2);
+            const objetoDevuelta = JSON.parse(textoJsons);
+
+            resultado = [
+                textoJsons, 
+                '',
+                `tipo:${typeof objetoDevuelta}`,
+                objetoDevuelta.nombre
+            ].join('\n');
+            break;
+    }
+    resultadoObjeto.textContent = resultado;
 });
 
