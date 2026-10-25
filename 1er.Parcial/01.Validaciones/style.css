@@ -1,59 +1,219 @@
-* {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: "Quicksand", "Nunito", Verdana, sans-serif;
-    color: #4a3e3d;
-    background-color: #fff5f7;
-  }
-  
-  header {
-    background-color: #ffc0d3;
-    color: #ffffff;
-    padding: 1.5rem;
-    text-align: center;
-    border-bottom: 3px solid #ffa4be;
-  }
-  header a {
-    color: #ff85a1;
-  }
-  
-  main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 1.5rem;
-  
-  }
-  footer{
-      text-align: center;
-      padding: 1rem;
-      color: #d8e2dc;
-      font-size: 0.85rem;
-  }
-  /*catalogo de talleres*/
-  
-  .catalogo {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-  
-  }
-  
-  .tarjeta {
-      padding: 1rem;
-      border: 1px solid #fff6c0;
-      border-radius: 0.5rem;
-      background-color: #e2ece9;
-  }
-  
-  .tarjeta h2{
-      margin-top: 0;
-      font-size: 1.1 rem;
-  }
-  
-  .tarjeta a {
-      color: #ffc2d1;
-      text-decoration: none;
-  }
+
+:root {
+  --sky: #8ecae6;
+  --blue: #219ebc;
+  --deep: #023047;
+  --amber: #ffb703;
+  --orange: #fb8500;
+
+  --bg: #eaf5fa;          
+  --surface: #ffffff;
+  --text: var(--deep);
+  --text-soft: #3d6075;
+  --border: rgba(2, 48, 71, 0.15);
+
+  --radius: 12px;
+  --shadow: 0 4px 14px rgba(2, 48, 71, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+--->encabezadp----->
+header,
+.header {
+  background: var(--deep);
+  color: #fff;
+  padding: 1.5rem 1rem;
+  border-bottom: 4px solid var(--amber);
+}
+
+header p,
+.header p {
+  margin: 0.25rem 0 0;
+  color: var(--sky);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+h2 { font-size: 1.4rem; color: var(--deep); }
+
+main,
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+a {
+  color: var(--blue);
+  font-weight: 600;
+}
+a:hover { color: var(--orange); }
+
+.grid,
+.talleres,
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card,
+.taller,
+article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.card:hover,
+.taller:hover {
+  border-left-color: var(--orange);
+}
+
+---->botones------>
+button,
+.btn {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.65rem 1.2rem;
+  color: var(--deep);
+  background: var(--amber);
+  transition: background 0.15s;
+}
+
+button:hover,
+.btn:hover {
+  background: var(--orange);
+}
+
+button.secondary,
+.btn-secondary {
+  background: var(--blue);
+  color: #fff;
+}
+button.secondary:hover,
+.btn-secondary:hover {
+  background: var(--deep);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+----->botones de ingreso---->
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--deep);
+  background: #fff;
+  border: 2px solid var(--sky);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(33, 158, 188, 0.3);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+----->asistencia----->
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+th {
+  background: var(--deep);
+  color: #fff;
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+tr:nth-child(even) td { background: rgba(142, 202, 230, 0.15); }
+tr:hover td { background: rgba(255, 183, 3, 0.2); }
+
+---->mensaje java miedo----->
+.cargando,
+.loading {
+  color: var(--text-soft);
+  font-style: italic;
+}
+
+.exito,
+.success {
+  background: rgba(33, 158, 188, 0.15);
+  border-left: 5px solid var(--blue);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.error {
+  background: rgba(251, 133, 0, 0.15);
+  border-left: 5px solid var(--orange);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+--->ultimo de pgina------>
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--text-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
   
