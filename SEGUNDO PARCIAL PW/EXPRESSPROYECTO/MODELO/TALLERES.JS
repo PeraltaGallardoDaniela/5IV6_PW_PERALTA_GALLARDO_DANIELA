@@ -1,14 +1,14 @@
-const pool = require('../DB-LOCAAL.JS');
+const pool = require('../DB-LOCAL.JS');
 
 // Consultar todos los talleres
 async function listar() {
-    const [filas] = await pool.query(`SELECT * FROM talleres ORDER BY id`);
+    const [filas] = await query(`SELECT * FROM talleres ORDER BY id`);
     return filas;
 }
 
 // consultarPorTaller (por id)
 async function consultarPorTaller(id) {
-    const [filas] = await pool.query(`SELECT * FROM talleres WHERE id = ?`, [id]);
+    const [filas] = await query(`SELECT * FROM talleres WHERE id = ?`, [id]);
     return filas[0];
 }
 
@@ -16,7 +16,7 @@ async function consultarPorTaller(id) {
 // Se inserta en la tabla de asistencias (o en una tabla intermedia si la tienes)
 async function registrarseEnUnTaller(usuarioId, tallerId) {
     // Verificamos que no esté ya registrado
-    const [existe] = await pool.query(
+    const [existe] = await query(
         `SELECT id FROM asistencias WHERE usuario_id = ? AND taller_id = ?`,
         [usuarioId, tallerId]
     );
@@ -24,7 +24,7 @@ async function registrarseEnUnTaller(usuarioId, tallerId) {
         throw new Error('El usuario ya está registrado en este taller');
     }
 
-    const [info] = await pool.query(
+    const [info] = await query(
         `INSERT INTO asistencias (usuario_id, taller_id, fecha) VALUES (?, ?, NOW())`,
         [usuarioId, tallerId]
     );

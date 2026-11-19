@@ -1,4 +1,4 @@
-const pool = require('../DB-LOCAAL.JS');
+const pool = require('../DB-LOCAL.JS');
 
 // registrarAsistenciaEnElTaller
 async function registrarAsistenciaEnElTaller(usuarioId, tallerId) {

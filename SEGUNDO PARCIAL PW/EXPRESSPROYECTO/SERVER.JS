@@ -22,9 +22,9 @@ app.post('/eco', (req, res) => {
     }
     res.status(201).json({eco: texto});
 });
-const usuarios = require('./Controlador/usuarios_controlador');
-const talleres = require('./Controlador/talleres_controlador');
-const asistencias = require('./Controlador/asistencias_controlador');
+const usuarios = require('./CONTROLDOR/usuarios_controlador');
+const talleres = require('./CONTROLDOR/talleres_controlador');
+const asistencias = require('./CONTROLDOR/asistencias_controlador');
 
 app.get('/usuarios', usuarios.listarUsuarios);
 app.get('/usuarios/:id', usuarios.obtenerUsuario);

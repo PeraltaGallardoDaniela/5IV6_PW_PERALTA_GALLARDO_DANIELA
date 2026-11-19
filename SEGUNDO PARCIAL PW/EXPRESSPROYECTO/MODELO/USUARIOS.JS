@@ -1,4 +1,4 @@
-const pool = require('../DB-LOCAAL.JS');
+const db = require('../DB-LOCAL.JS');
 
 const COLUMNAS_PUBLICAS = 'id, nombre, correo, boleta, rol';
 
