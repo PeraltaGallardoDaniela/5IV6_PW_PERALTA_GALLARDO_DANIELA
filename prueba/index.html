@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmberDev — Plataforma de Desarrollo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Tu Paleta de Colores */
+            --ink-black: #03071eff;
+            --night-bordeaux: #370617ff;
+            --black-cherry: #6a040fff;
+            --oxblood: #9d0208ff;
+            --brick-ember: #d00000ff;
+            --red-ochre: #dc2f02ff;
+            --cayenne-red: #e85d04ff;
+            --deep-saffron: #f48c06ff;
+            --orange: #faa307ff;
+            --amber-flame: #ffba08ff;
+
+            /* Texto de Alto Contraste */
+            --text-light: #f8f9fa;
+            --text-muted: #ced4da;
+
+            /* Tipografías */
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--ink-black);
+            color: var(--text-light);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background-color: rgba(55, 6, 23, 0.65);
+            border-bottom: 1px solid var(--black-cherry);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: var(--font-code);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--amber-flame);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--cayenne-red);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--amber-flame);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 8% 4rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: center;
+            background: radial-gradient(circle at top right, var(--night-bordeaux) 0%, var(--ink-black) 60%);
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--orange);
+            background-color: var(--night-bordeaux);
+            border: 1px solid var(--oxblood);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 .highlight {
+            background: linear-gradient(90deg, var(--cayenne-red), var(--amber-flame));
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 540px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Botón Principal: Alto contraste (Ink Black sobre Amber Flame) */
+        .btn-primary {
+            background-color: var(--amber-flame);
+            color: var(--ink-black);
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.85rem 1.75rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s, background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.85rem 1.75rem;
+            border: 1px solid var(--oxblood);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--night-bordeaux);
+            border-color: var(--cayenne-red);
+        }
+
+        /* Terminal / Bloque de Código */
+        .terminal {
+            background-color: var(--night-bordeaux);
+            border: 1px solid var(--black-cherry);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .terminal-header {
+            background-color: var(--black-cherry);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background-color: var(--brick-ember);
+        }
+
+        .dot-orange {
+            background-color: var(--cayenne-red);
+        }
+
+        .dot-amber {
+            background-color: var(--amber-flame);
+        }
+
+        .terminal-title {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .code-comment {
+            color: #9e7682;
+        }
+
+        .code-keyword {
+            color: var(--cayenne-red);
+            font-weight: 700;
+        }
+
+        .code-func {
+            color: var(--amber-flame);
+        }
+
+        .code-string {
+            color: var(--orange);
+        }
+
+        /* Cards Grid */
+        .features {
+            padding: 4rem 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--night-bordeaux);
+            border: 1px solid var(--black-cherry);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--deep-saffron);
+            transform: translateY(-4px);
+        }
+
+        .card-tag {
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: var(--amber-flame);
+            background-color: var(--black-cherry);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--night-bordeaux);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: var(--font-code);
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 3rem;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo"><span>&gt;_</span> EMBER.STACK</div>
+        <nav>
+            <a href="#arquitectura">Arquitectura</a>
+            <a href="#api">API Docs</a>
+            <a href="#deploy">Deploy</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div>
+                <span class="badge">v2.4.0 • Producción Lista</span>
+                <h1>Construye software de <span class="highlight">alto rendimiento</span> sin fricción.</h1>
+                <p>Entorno integrado para desarrollo web y móvil con tipografía de alto contraste, arquitectura modular
+                    y despliegue continuo en segundos.</p>
+                <div class="actions">
+                    <button class="btn-primary">Iniciar Proyecto</button>
+                    <button class="btn-secondary">Ver Repositorio</button>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-orange"></div>
+                    <div class="dot dot-amber"></div>
+                    <span class="terminal-title">server.config.js</span>
+                </div>
+                <div class="terminal-body">
+                    <span class="code-comment">// Inicialización del núcleo del sistema</span><br>
+                    <span class="code-keyword">import</span> { createEngine } <span class="code-keyword">from</span>
+                    <span class="code-string">'@ember/core'</span>;<br><br>
+                    <span class="code-keyword">const</span> app = <span class="code-func">createEngine</span>({<br>
+                    &nbsp;&nbsp;environment: <span class="code-string">'production'</span>,<br>
+                    &nbsp;&nbsp;authMode: <span class="code-string">'JWT_STRICT'</span>,<br>
+                    &nbsp;&nbsp;maxLatencyMs: <span class="code-func">15</span><br>
+                    });<br><br>
+                    app.<span class="code-func">listen</span>(<span class="code-func">8080</span>);
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="arquitectura">
+            <article class="card">
+                <span class="card-tag">01 // BACKEND</span>
+                <h3>API REST & Seguridad</h3>
+                <p>Autenticación basada en tokens con cifrado robusto y validación de sesiones en tiempo real.</p>
+            </article>
+
+            <article class="card">
+                <span class="card-tag">02 // MOBILE</span>
+                <h3>Nativo en Android</h3>
+                <p>Componentes XML optimizados con la misma paleta cálida y alto contraste para pantallas OLED.</p>
+            </article>
+
+            <article class="card">
+                <span class="card-tag">03 // CI/CD</span>
+                <h3>Despliegue Automatizado</h3>
+                <p>Integración directa con control de versiones Git para publicar cambios sin tiempo de inactividad.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        STATUS: ALL SYSTEMS OPERATIONAL • BUILT WITH EMBER PALETTE
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/api/usuarios/9999"
+method: PUT
+body:
+  type: json
+  content: "{\r\n  \"nombre\": \"No existe\"\r\n}"
+order: 13000

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talleres | Aula Abierta</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <nav id="nav"></nav>
+  <main>
+    <p class="eyebrow">Agenda</p>
+    <div class="section-heading" style="margin-top:0"><div><h1 style="font-size:48px">Talleres</h1><p class="lead">Sesiones para aprender algo nuevo y ponerlo en práctica.</p></div><button id="toggle-form" class="secondary" type="button">Crear taller</button></div>
+    <section id="crear-panel" class="panel" hidden>
+      <h2>Nuevo taller</h2>
+      <form id="crear-taller" class="form-grid">
+        <div class="field full"><label for="nombre">Nombre</label><input id="nombre" name="nombre" maxlength="100" required></div>
+        <div class="field full"><label for="descripcion">Descripción</label><textarea id="descripcion" name="descripcion"></textarea></div>
+        <div class="field"><label for="instructor">Instructor</label><input id="instructor" name="instructor" placeholder="Por confirmar"></div>
+        <div class="field"><label for="fecha">Fecha</label><input id="fecha" name="fecha" type="date"></div>
+        <div class="field"><label for="cupo">Cupo</label><input id="cupo" name="cupo" type="number" min="1" max="500" value="15" required></div>
+        <div class="field full"><button type="submit">Guardar taller</button><div id="crear-aviso" class="notice" role="status"></div></div>
+      </form>
+    </section>
+    <div id="talleres" class="workshop-grid" style="margin-top:24px"><p class="muted">Cargando talleres…</p></div>
+  </main>
+  <footer>Aula Abierta · Talleres y aprendizaje</footer>
+  <script src="/js/comun.js"></script>
+  <script src="/js/talleres.js"></script>
+</body>
+</html>

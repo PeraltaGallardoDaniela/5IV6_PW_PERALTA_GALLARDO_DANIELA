@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{baseUrl}}/api/talleres"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \r
+
+    \    \"nombre\": \"Taller de Postman\",\r
+
+    \    \"instructor\": \"Ing. Martinez Sanchez Melody\",\r
+
+    \    \"fecha\": \"2026-11-20\",\r
+
+    \    \"cupo\":15\r
+
+    }"
+order: 3000

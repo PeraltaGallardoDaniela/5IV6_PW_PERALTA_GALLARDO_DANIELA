@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi asistencia | Aula Abierta</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <nav id="nav"></nav>
+  <main>
+    <p class="eyebrow">Área de alumno</p>
+    <h1 style="font-size:48px">Mi asistencia</h1>
+    <p class="lead">Consulta tu perfil, tus talleres inscritos y las próximas sesiones con lugares disponibles.</p>
+    <section class="panel" style="max-width:600px;margin-top:28px">
+      <form id="buscar-perfil">
+        <div class="field"><label for="boleta">Boleta</label><input id="boleta" name="boleta" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" placeholder="10 dígitos" required></div>
+        <button type="submit">Consultar perfil</button>
+      </form>
+      <div id="perfil-aviso" class="notice" role="status"></div>
+    </section>
+    <section id="perfil" class="profile-result"></section>
+    <div class="section-heading"><div><p class="eyebrow">Inscripciones abiertas</p><h2>Talleres disponibles</h2></div></div>
+    <div id="disponibles" class="workshop-grid"><p class="muted">Cargando talleres…</p></div>
+  </main>
+  <footer>Aula Abierta · Talleres y aprendizaje</footer>
+  <script src="/js/comun.js"></script>
+  <script src="/js/asistencia.js"></script>
+</body>
+</html>

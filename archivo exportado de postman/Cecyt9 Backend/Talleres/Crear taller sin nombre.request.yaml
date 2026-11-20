@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/api/talleres"
+method: POST
+body:
+  type: json
+  content: "{\r\n    \"cupo\": 20\r\n}"
+order: 5000

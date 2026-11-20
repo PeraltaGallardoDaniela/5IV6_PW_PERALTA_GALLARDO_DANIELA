@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/usuarios"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"nombre\": \"\",\r
+
+    \  \"correo\": \"\",\r
+
+    \  \"contrasena\": \"\",\r
+
+    \  \"boleta\": \"\"\r
+
+    }"
+order: 9000

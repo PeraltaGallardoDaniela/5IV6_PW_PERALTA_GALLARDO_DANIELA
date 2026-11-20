@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{baseUrl}}/api/usuarios/{{usuarioId}}"
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \  \"nombre\": \"Martinez Sanchez Geraldine Melody Actualizada\"\r
+
+    }"
+order: 10000

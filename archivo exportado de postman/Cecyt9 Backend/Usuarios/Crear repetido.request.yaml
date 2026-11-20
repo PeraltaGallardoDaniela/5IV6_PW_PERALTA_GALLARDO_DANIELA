@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/usuarios"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"nombre\": \"Martinez Sanchez Geraldine Melody\",\r
+
+    \    \"correo\": \"martinezs2401@alumno.ipn.mx\",\r
+
+    \    \"contrasena\": \"olaketal19\",\r
+
+    \    \"boleta\":\"2025090850\"\r
+
+    }"
+order: 5000

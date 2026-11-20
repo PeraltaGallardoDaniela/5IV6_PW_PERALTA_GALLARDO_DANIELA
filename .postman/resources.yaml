@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: ab3f0744-9fa3-47c3-837f-4e4ae28ad6ca
+
+localResources:
+  collections:
+    - ../archivo exportado de postman/Cecyt9 Backend
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../archivo exportado de postman/Cecyt9 Backend: 1c3b266e-4a3e-4284-96c4-3c81d76b6543

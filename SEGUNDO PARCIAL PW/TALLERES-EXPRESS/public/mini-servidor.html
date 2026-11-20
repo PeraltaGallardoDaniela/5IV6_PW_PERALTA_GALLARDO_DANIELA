@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini-servidor | Aula Abierta</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <nav id="nav"></nav>
+  <main>
+    <p class="eyebrow">Express</p>
+    <h1 style="font-size:48px">Mini-servidor</h1>
+    <div class="mini-hero" style="margin-top:24px"><p>El parámetro capturado por la ruta es:</p><strong id="parametro"></strong></div>
+  </main>
+  <footer>Aula Abierta · Talleres y aprendizaje</footer>
+  <script src="/js/comun.js"></script>
+  <script>document.querySelector('#parametro').textContent = decodeURIComponent(location.pathname.split('/').pop());</script>
+
+  
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuarios | Aula Abierta</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <nav id="nav"></nav>
+  <main>
+    <p class="eyebrow">Comunidad</p>
+    <h1 style="font-size:48px">Usuarios</h1>
+    <p class="lead">Registra tu cuenta para identificarte en los talleres.</p>
+    <div class="two-col" style="margin-top:28px">
+      <section class="panel">
+        <h2>Crear cuenta</h2>
+        <form id="crear-usuario">
+          <div class="form-grid">
+            <div class="field full"><label for="nombre">Nombre completo</label><input id="nombre" name="nombre" maxlength="100" required></div>
+            <div class="field full"><label for="correo">Correo</label><input id="correo" name="correo" type="email" required></div>
+            <div class="field full"><label for="boleta">Boleta</label><input id="boleta" name="boleta" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" required></div>
+            <div class="field full"><label for="contrasena">Contraseña</label><input id="contrasena" name="contrasena" type="password" minlength="6" required></div>
+          </div>
+          <button type="submit">Crear cuenta</button>
+        </form>
+        <div id="usuario-aviso" class="notice" role="status"></div>
+      </section>
+      <section>
+        <div class="section-heading" style="margin:0 0 15px"><div><h2>Cuentas registradas</h2></div></div>
+        <div id="usuarios" class="panel"><p class="muted">Cargando usuarios…</p></div>
+      </section>
+    </div>
+  </main>
+  <footer>Aula Abierta · Talleres y aprendizaje</footer>
+  <script src="/js/comun.js"></script>
+  <script src="/js/usuarios.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/asistencias"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"taller_id\":21,\r
+
+    \    \"usuario_id\": 1,\r
+
+    \    \"fecha\": \"2026-10-28\"\r
+
+    }"
+order: 1000

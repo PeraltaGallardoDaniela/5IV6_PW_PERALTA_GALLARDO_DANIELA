@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{baseUrl}}/api/usuarios/{{usuarioId}}"
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \  \"correo\": \"martinezme2401@alumno.ipn.mx\"\r
+
+    }"
+order: 12000

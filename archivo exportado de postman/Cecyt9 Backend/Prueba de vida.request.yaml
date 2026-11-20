@@ -1,0 +1,4 @@
+$kind: http-request
+url: Environments/
+method: GET
+order: 4000
